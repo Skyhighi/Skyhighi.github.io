@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hole and Mole Game</title>
+    <style>
+        * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: cursive;
+    background-color: #000000;
+    color: #fff;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 5rem;
+    line-height: 1;
+    margin-top: 45px;
+  }
+  
+  .score {
+    color: #005e94;
+    background: #302f2fed;
+    padding: 1rem;
+    line-height: 1;
+    border-radius: 1rem;
+    display: inline-block;
+  }
+  
+  .controls {
+    margin: 5px;
+    text-align: center;
+  }
+  
+  .start-btn {
+    padding: 10px 25px;
+    outline: none;
+    font-size: 24px;
+    background: #ff6200;
+    color: #fff;
+    border: 0px;
+    box-shadow: 1px 2px 4px #b75959b0;
+    cursor: pointer;
+  }
+  
+  .start-btn:hover {
+    background: #187bc2;
+    box-shadow: 1px 2px 4px #185fc2b0;
+  }
+  
+  .levels {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Style for each difficulty level */
+  .levels > div {
+    margin: 20px;
+  }
+  
+  .levels > div:nth-child(1) {
+    color: #00ff00;
+  }
+  .levels > div:nth-child(2) {
+    color: #ffd24e;
+  }
+  .levels > div:nth-child(3) {
+    color: #ff0000;
+  }
+  
+  /* Style for the game board */
+  .game {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  
+  /* Style for each hole on the game board */
+  .hole {
+    flex: 1 0 33.33%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Style for the mole inside each hole */
+  .hole:after {
+    background: url("hole.png") bottom center no-repeat;
+    background-size: contain;
+    content: "";
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    z-index: 2;
+    bottom: -30px;
+  }
+  
+  /* Style for the mole when it pops up from a hole */
+  .mole {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    background: url("mole.png") bottom center no-repeat;
+    background-size: 60%;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+  
+  /* Style for the mole when it pops up from a hole and becomes visible */
+  .hole.up .mole {
+    top: 0;
+  }
+  
+  /* adjust for small screen size */
+  @media (max-width: 768px) {
+    h1 {
+      padding: 20px;
+      font-size: 2rem;
+    }
+  
+    .score {
+      margin: 20px;
+    }
+  
+    .hole::after {
+      bottom: -22px;
+      margin: 6px;
+    }
+  
+    .start-btn {
+      padding: 8px 20px;
+    }
+  
+    .levels > div {
+      margin: 10px;
+    }
+  
+    .game {
+      width: 90%;
+      height: 300px;
+    }
+  }
+  
+    </style>
+  </head>
+  
+  <body>
+    <h1>Catch me, If you can <span class="score">0</span></h1>
+
+    <!-- Radio buttons for selecting game difficulty level -->
+    <div class="levels">
+      <div>
+        <input type="radio" name="level" id="easy" checked />
+        <label for="easy">Easy</label><br />
+      </div>
+      <div>
+        <input type="radio" name="level" id="medium" />
+        <label for="medium">Medium</label><br />
+      </div>
+      <div>
+        <input type="radio" name="level" id="hard" />
+        <label for="hard">Hard</label><br />
+      </div>
+    </div>
+
+    <!-- Start button for the game -->
+    <div class="controls">
+      <button class="start-btn" onClick="startGame()">Start!</button>
+    </div>
+
+    <!-- Game board with holes and moles -->
+    <div class="game">
+      <div class="hole hole1">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole2">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole3">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole4">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole5">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole6">
+        <div class="mole"></div>
+      </div>
+    </div>
+
+    <script src="Holecode.js"></script>
+  </body>
+</html>
